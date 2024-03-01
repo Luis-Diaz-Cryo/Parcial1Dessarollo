@@ -25,9 +25,11 @@ fun NavManagement(
         composable(NavDestinations.ContactList.route) {
             ContactList(contactListViewModel, navController, contactDetailsViewModel)
         }
-        composable(NavDestinations.ContactDetails.route) { backStackEntry ->
+        composable(NavDestinations.ContactDetails.route+"/{contactName}") { backStackEntry ->
             val contactName = backStackEntry.arguments?.getString("contactName")
-            val contact = contactName?.let { contactRepository.getContactByName(it) }
+            requireNotNull(contactName,{""})
+
+            val contact = contactRepository.getContactByName(contactName)
 
             if (contact != null) {
                 ContactDetails(contactDetailsViewModel, navController, contactEditViewModel, contact)

@@ -79,7 +79,7 @@ fun ContactListItems(
                 modifier = Modifier
                     .fillMaxWidth()
                     .clickable {
-                        navController.navigate("${NavDestinations.ContactDetails.route}?contactName=${contact.name}")
+                        navController.navigate("${NavDestinations.ContactDetails.route}/${contact.name}")
                         contactDetailsViewModel.updateSelectedContact(contact)
                     }
                     .padding(8.dp),

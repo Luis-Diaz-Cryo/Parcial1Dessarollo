@@ -20,5 +20,6 @@ class ContactRepository {
 
     fun getContactByName(contactName: String): Contact? {
         return _contacts.value?.find { it.name == contactName }
+
     }
 }
